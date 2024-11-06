@@ -1,0 +1,11 @@
+coding_dojo_databricks_dbt:
+  outputs:
+    dev:
+      type: databricks
+      catalog: "{{ env_var('DBT_CATALOG') }}"
+      schema: "{{ env_var('DBT_SCHEMA') }}"
+      host: "{{ env_var('DBT_DBX_HOST') }}"
+      http_path: "{{ env_var('DBT_SQL_WAREHOUSE') }}"
+      token: "{{ env_var('DBT_DBX_TOKEN') }}"
+      threads: 2
+  target: dev

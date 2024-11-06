@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: sources
+    schema: dbt_jnadal_sources
+    tables:
+      - name: orders
+        external:
+          location: 's3://data-trainings-dev-bucket/databricks-coding-dojo/raw/orders'   # hdfs://, s3://, azure://, dbfs://, ...
+          using: parquet                         # file type: csv, json, parquet, delta, ...
+          partitions:
+            - name: order_date
+              data_type: string
+        columns:
+          - name: identifier
+            data_type: bigint
+          - name: restaurant_identifier
+            data_type: bigint
+          - name: dishes_ids
+            data_type: string
+          - name: payment_method
+            data_type: string
+          - name: amount
+            data_type: bigint
+          - name: created_at
+            data_type: string
+          - name: order_date
+            data_type: date
