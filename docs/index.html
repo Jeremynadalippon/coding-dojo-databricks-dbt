@@ -4,12 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 20px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+        a img {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
 </head>
 <body>
     <h1>Bienvenue sur notre page d'accueil</h1>
     <ul>
-        <li><a href="dbt_docs/index.html">Documentation dbt</a></li>
-        <li><a href="elementary-docs/index.html">Documentation Elementary</a></li>
+        <li>
+            <a href="dbt_docs/index.html">
+                <img src="https://www.getdbt.com/wp-content/uploads/2021/04/dbt-logo-color-tm-800px.png" alt="dbt Logo">
+                Documentation dbt
+            </a>
+        </li>
+        <li>
+            <a href="elementary/elementary_report.html">
+                <img src="https://docs.elementary-data.com/img/elementary-logo.png" alt="Elementary Logo">
+                Documentation Elementary
+            </a>
+        </li>
     </ul>
 </body>
 </html>
