@@ -21,7 +21,6 @@ with orders as (
 , final as (
     select
         *
-        , '{{ var("date_from") }}' as date_from
         , '{{ run_started_at }}' as run_started_at
     from
         grouped

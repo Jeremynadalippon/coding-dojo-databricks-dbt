@@ -6,7 +6,7 @@ sources:
     tables:
       - name: orders
         external:
-          location: 's3://data-trainings-dev-bucket/databricks-coding-dojo/raw/orders'   # hdfs://, s3://, azure://, dbfs://, ...
+          location: 's3://data-trainings-dev-bucket/databricks-coding-dojo/jnadal/raw/orders/'
           using: parquet                         # file type: csv, json, parquet, delta, ...
           partitions:
             - name: order_date

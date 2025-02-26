@@ -1,6 +1,10 @@
+{{
+    config(
+        materialized = 'ephemeral'
+    )
+}}
+
 select
     *
 from
-    {{ source("sources", "orders") }}
-where
-    order_date >= '{{ var("date_from") }}'
+    {{ custom_source('sources', 'orders') }}

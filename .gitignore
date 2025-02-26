@@ -7,3 +7,5 @@ logs/
 package-lock.yml
 .venv/
 .vscode/
+TEST_DAB/
+.DS_Store

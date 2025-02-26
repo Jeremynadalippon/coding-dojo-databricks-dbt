@@ -1,0 +1,51 @@
+version: 2
+
+macros:
+  - name: custom_source
+    description: >
+      This macro is used to retrieve a data source, first checking if it is an external source.
+      If it is, it generates the appropriate prefix and location to access the external source.
+      Otherwise, it uses the standard source defined in dbt.
+    arguments:
+      - name: source_name
+        type: string
+        description: Name of the source.
+      - name: table_name
+        type: string
+        description: Name of the table.
+
+  - name: get_external_type
+    description: >
+      This macro determines the type to use for accessing an external source based on its format (Delta or Parquet).
+    arguments:
+      - name: source_node
+        type: dict
+        description: Object representing the source.
+
+  - name: get_external_location
+    description: >
+      This macro retrieves the location of the external source from the source's metadata.
+    arguments:
+      - name: source_node
+        type: dict
+        description: Object representing the source.
+
+  - name: is_external_source
+    description: >
+      This macro checks if a given source is external by inspecting its metadata.
+    arguments:
+      - name: source_node
+        type: dict
+        description: Object representing the source.
+
+  - name: get_graph_object
+    description: >
+      This macro retrieves an object from the dbt graph based on its type and name.
+      For the moment only sources and nodes are supported.
+    arguments:
+      - name: object_name
+        type: string
+        description: Name of the object.
+      - name: object_type
+        type: string
+        description: Type of the object (default is "sources"). Must be one of ['exposures', 'groups', 'metrics', 'nodes', 'sources', 'semantic_models', 'saved_queries'].
