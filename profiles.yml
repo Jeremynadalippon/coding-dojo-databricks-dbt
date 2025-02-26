@@ -1,11 +1,15 @@
 coding_dojo_databricks_dbt:
-  outputs:
-    dev:
-      type: databricks
-      catalog: "{{ env_var('DBT_CATALOG') }}"
-      schema: "{{ env_var('DBT_SCHEMA') }}"
-      host: "{{ env_var('DBT_DBX_HOST') }}"
-      http_path: "{{ env_var('DBT_SQL_WAREHOUSE') }}"
-      token: "{{ env_var('DBT_DBX_TOKEN') }}"
-      threads: 2
   target: dev
+  outputs:
+    dev: &dev_config
+      type: databricks
+      catalog: main
+      schema: dbt_jnadal
+      host: "{{ env_var('DBT_HOST') }}"
+      http_path: /sql/1.0/warehouses/b47df7379a47260a
+      token: "{{ env_var('DBT_ACCESS_TOKEN') }}"
+      threads: 2
+
+    prod:
+      <<: *dev_config
+      schema: silver

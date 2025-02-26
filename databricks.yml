@@ -1,0 +1,36 @@
+# This file defines the structure of this project and how it is deployed
+# to production using Databricks Asset Bundles.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: coding_dojo_databricks_dbt
+
+include:
+  - resources/*.yml
+  
+
+# Deployment targets.
+# The default schema, catalog, etc. for dbt are defined in dbt_profiles/profiles.yml
+targets:
+  dev:
+    default: true
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    workspace:
+      host: https://dbc-4c604411-29e7.cloud.databricks.com
+
+  prod:
+    mode: production
+    git:
+      branch: main
+    workspace:
+      host: https://dbc-4c604411-29e7.cloud.databricks.com
+      # We explicitly specify /Workspace/Users/jnadal@ippon.fr to make sure we only have a single copy.
+      root_path: /Workspace/Users/jnadal@ippon.fr/.bundle/${bundle.name}/${bundle.target}
+    permissions:
+      - user_name: jnadal@ippon.fr
+        level: CAN_MANAGE
+    run_as:
+      user_name: jnadal@ippon.fr

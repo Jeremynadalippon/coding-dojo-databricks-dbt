@@ -1,7 +1,7 @@
 {{
   config(
         materialized = 'table',
-        location_root = 's3://data-trainings-dev-bucket/databricks-coding-dojo/jnadal/transformed/'
+        location_root = 's3://data-trainings-dev-bucket/databricks-coding-dojo/jnadal/transformed/'~target.schema
     )
 }}
 
